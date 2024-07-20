@@ -1,11 +1,9 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim-buster
+FROM python:3.10-slim
+MAINTAINER Konstantin Verner <konst.verner@gmail.com>
 
 # Set the working directory in the container to /app
 WORKDIR /app
-
-# Add current directory code to /app in container
-ADD . /app
 
 # Copy the pyproject.toml and other necessary files
 COPY pyproject.toml .
@@ -15,8 +13,8 @@ COPY tests ./tests
 # Install build dependencies
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
-# Install package
-RUN pip install .
+# Install project dependencies
+RUN pip install --no-cache-dir .
 
 # Set environment variables for Python
 ENV PYTHONUNBUFFERED=1
