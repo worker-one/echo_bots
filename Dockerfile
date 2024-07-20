@@ -13,8 +13,8 @@ COPY tests ./tests
 # Install build dependencies
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
-# Install project dependencies
-RUN pip install --no-cache-dir .
+# Install optional dependencies if needed
+RUN pip install --no-cache-dir ".[all]"
 
 # Set environment variables for Python
 ENV PYTHONUNBUFFERED=1
