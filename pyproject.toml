@@ -23,7 +23,8 @@ dependencies = [
     "pyTelegramBotAPI==4.20.0",
     "omegaconf==2.3.0",
     "python-dotenv==1.0.1",
-    "sqlalchemy==1.4.25"
+    "sqlalchemy==1.4.25",
+    "psycopg2-binary"
 ]
 
 [project.optional-dependencies]
