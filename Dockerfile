@@ -15,6 +15,9 @@ COPY tests ./tests
 # Install build dependencies
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
+# Install package
+RUN pip install .
+
 # Set environment variables for Python
 ENV PYTHONUNBUFFERED=1
 
