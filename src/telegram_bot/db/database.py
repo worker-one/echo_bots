@@ -1,3 +1,4 @@
+import logging
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from .models import Message, Base, User
@@ -6,6 +7,15 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env file
+
+# Load logging configuration with OmegaConf
+logging_config = OmegaConf.to_container(OmegaConf.load("./src/telegram_bot/conf/logging_config.yaml"), resolve=True)
+
+# Apply the logging configuration
+logging.config.dictConfig(logging_config)
+
+# Configure logging
+logger = logging.getLogger(__name__)
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 if DATABASE_URL is None:
