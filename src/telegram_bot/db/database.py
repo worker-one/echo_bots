@@ -8,7 +8,10 @@ from dotenv import load_dotenv
 load_dotenv()  # Load environment variables from .env file
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-print(DATABASE_URL)
+if DATABASE_URL is None:
+    logger.error("DATABASE_URL is not set in the environment variables.")
+    exit(1)
+    
 engine = create_engine(DATABASE_URL)
 Base.metadata.create_all(engine)
 
