@@ -2,7 +2,7 @@ import datetime
 import logging
 import os
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from omegaconf import OmegaConf
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -18,11 +18,9 @@ logging.config.dictConfig(logging_config)
 # Configure logging
 logger = logging.getLogger(__name__)
 
-BASEDIR = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(find_dotenv())
 
-load_dotenv(os.path.join(BASEDIR, ".env"))
-
-logging.info(f'Loading variables from {os.path.join(BASEDIR, ".env")}')
+logging.info(f'Loading variables from {find_dotenv()}')
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 if DATABASE_URL is None:
