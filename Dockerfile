@@ -19,6 +19,9 @@ RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 # Install optional dependencies if needed
 RUN pip install --no-cache-dir ".[all]"
 
+# Copy the rest of the application code into the container
+COPY . /app
+
 # Make port 80 available to the world outside this container
 EXPOSE 80
 
