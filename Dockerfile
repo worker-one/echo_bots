@@ -12,10 +12,10 @@ COPY pyproject.toml README.md /app/
 COPY .env /app/
 
 # Install build dependencies
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip install --upgrade pip setuptools wheel
 
 # Install optional dependencies if needed
-RUN pip install --no-cache-dir .
+RUN pip install .
 
 # Copy the rest of the application code into the container
 COPY . /app
