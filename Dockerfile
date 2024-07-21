@@ -14,8 +14,8 @@ COPY .env /app/
 # Install build dependencies
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
-# Install project dependencies
-RUN pip install --no-cache-dir ".[all]"
+# Install optional dependencies if needed
+RUN pip install --no-cache-dir .
 
 # Copy the rest of the application code into the container
 COPY . /app
