@@ -2,7 +2,7 @@ import os
 import telebot
 import logging
 import logging.config
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from omegaconf import OmegaConf
 
 from telegram_bot.service.app import App
@@ -17,7 +17,7 @@ logging.config.dictConfig(logging_config)
 # Configure logging
 logger = logging.getLogger(__name__)
 
-load_dotenv()  # Load environment variables from .env file
+load_dotenv(find_dotenv(usecwd=True))  # Load environment variables from .env file
 TOKEN = os.getenv("BOT_TOKEN")
 
 if TOKEN is None:
