@@ -1,6 +1,7 @@
 import os
 import telebot
 import logging
+import logging.config
 from dotenv import load_dotenv
 from omegaconf import OmegaConf
 
