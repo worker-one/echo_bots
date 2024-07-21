@@ -11,11 +11,14 @@ COPY pyproject.toml README.md /app/
 # Copy the .env file into the container
 COPY .env /app/
 
+# Install core dependencies.
+RUN apt-get update && apt-get install -y libpq-dev build-essential
+
 # Install build dependencies
-RUN pip install --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
 # Install optional dependencies if needed
-RUN pip install .
+RUN pip install --no-cache-dir .
 
 # Copy the rest of the application code into the container
 COPY . /app
