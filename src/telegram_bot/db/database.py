@@ -9,8 +9,6 @@ from sqlalchemy.orm import sessionmaker
 
 from .models import Base, Message, User
 
-load_dotenv()  # Load environment variables from .env file
-
 # Load logging configuration with OmegaConf
 logging_config = OmegaConf.to_container(OmegaConf.load("./src/telegram_bot/conf/logging_config.yaml"), resolve=True)
 
@@ -19,6 +17,12 @@ logging.config.dictConfig(logging_config)
 
 # Configure logging
 logger = logging.getLogger(__name__)
+
+BASEDIR = os.path.abspath(os.path.dirname(__file__))
+
+load_dotenv(os.path.join(BASEDIR, ".env"))
+
+logging.info(f"Loading variables from {os.path.join(BASEDIR, ".env")}")
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 if DATABASE_URL is None:
