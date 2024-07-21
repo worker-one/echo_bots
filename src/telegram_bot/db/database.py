@@ -22,7 +22,7 @@ BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
 load_dotenv(os.path.join(BASEDIR, ".env"))
 
-logging.info(f"Loading variables from {os.path.join(BASEDIR, ".env")}")
+logging.info(f'Loading variables from {os.path.join(BASEDIR, ".env")}')
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 if DATABASE_URL is None:
