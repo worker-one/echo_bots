@@ -19,7 +19,7 @@ logging.config.dictConfig(logging_config)
 # Configure logging
 logger = logging.getLogger(__name__)
 
-load_dotenv(find_dotenv())
+load_dotenv(find_dotenv(usecwd=True))
 
 logging.info(f'Loading variables from {find_dotenv()}')
 
