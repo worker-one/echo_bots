@@ -1,11 +1,14 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM python:3.10-slim
+MAINTAINER Konstantin Verner <konst.verner@gmail.com>
 
-# Set the working directory in the container
+# Set the working directory in the container to /app
 WORKDIR /app
 
-# Copy the pyproject.toml and the README.md into the container at /app
-COPY pyproject.toml README.md /app/
+# Copy the pyproject.toml and other necessary files
+COPY pyproject.toml .
+COPY src ./src
+COPY tests ./tests
 
 # Copy the .env file into the container
 COPY .env /app/
@@ -14,13 +17,10 @@ COPY .env /app/
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
 # Install optional dependencies if needed
-RUN pip install --no-cache-dir .
+RUN pip install --no-cache-dir ".[all]"
 
-# Copy the rest of the application code into the container
-COPY . /app
+# Make port 80 available to the world outside this container
+EXPOSE 80
 
-# Expose the port your app runs on. Flask by default runs on port 5000.
-EXPOSE 5000
-
-# Command to run the application
+# Run the application when the container launches
 CMD ["python", "src/telegram_bot/main.py"]
