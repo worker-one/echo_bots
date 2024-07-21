@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 load_dotenv(find_dotenv(usecwd=True))
 
-logging.info(f'Loading variables from {find_dotenv()}')
+logging.info(f'Loading variables from {find_dotenv(usecwd=True)}')
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 if DATABASE_URL is None:
