@@ -18,7 +18,8 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "BOT_TOKEN=${{ vars.BOT_TOKEN }}" >> .env
+          echo "TELEGRAM_TOKEN=${{ vars.TELEGRAM_TOKEN }}" >> .env
+          echo "DISCORD_TOKEN=${{ vars.DISCORD_TOKEN }}" >> .env
           echo "DB_HOST=${{ vars.DB_HOST }}" >> .env
           echo "DB_PORT=${{ vars.DB_PORT }}" >> .env
           echo "DB_NAME=${{ vars.DB_NAME }}" >> .env
