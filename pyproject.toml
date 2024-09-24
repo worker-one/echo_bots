@@ -3,13 +3,10 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]  # project’s basic metadata, such as the dependencies, your name, etc.
-name = "telegram_bot"
+name = "echo_bots"
 version = "0.0.0"  #
 description = "This package is a sample"
 readme = "README.md"
-authors = [
-    {name = "Konstantin Verner"},
-]
 
 classifiers = [  #
     "Development Status :: 5 - Production/Stable",
@@ -24,7 +21,8 @@ dependencies = [
     "omegaconf==2.3.0",
     "sqlalchemy==1.4.25",
     "psycopg2-binary",
-    "python-dotenv"
+    "python-dotenv",
+    "discord.py"
 ]
 
 [project.optional-dependencies]

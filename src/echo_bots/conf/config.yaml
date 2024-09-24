@@ -1,0 +1,11 @@
+discord:
+  source:
+    - 1287504962330300462
+    - 1256280119752917155
+  target:
+    - 1256280119752917155
+telegram:
+  source:
+    - "@flibustiersClub"
+  target:
+    - "@flibustiersClub"
