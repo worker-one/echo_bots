@@ -20,7 +20,6 @@ logging.config.dictConfig(logging_config)
 logger = logging.getLogger(__name__)
 
 
-
 config = OmegaConf.load("./src/echo_bots/conf/config.yaml")
 
 
@@ -34,7 +33,7 @@ discord_client = discord.Client(intents=intents)
 # Initialize the Telegram bot
 telegram_bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
-logger.info(f"Logged as a telegram bot {telegram_bot.me}")
+logger.info(f"Logged as a telegram bot {telegram_bot.get_me().username}")
 
 @discord_client.event
 async def on_ready():
@@ -44,6 +43,9 @@ async def on_ready():
 async def on_message(message):
     # Don't respond to the bot's own messages
     if message.author == discord_client.user:
+        return
+    # Don't take messages from not source channels
+    if message.channel not in config.discord.source:
         return
     logger.info(f'Discord message: {message.content} from {message.channel}')
     # Send the message to Telegram
