@@ -26,4 +26,4 @@ COPY . /app
 EXPOSE 80
 
 # Run the application when the container launches
-CMD ["python", "src/echo_bots/main.py"]
+CMD ["python", "src/echo_bots/api/main.py"]
